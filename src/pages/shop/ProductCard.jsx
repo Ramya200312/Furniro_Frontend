@@ -22,7 +22,6 @@ export default function ProductCard() {
   );
 
   const goToProduct = (id) => navigate(`/product/${id}`);
-  console.log(products);
 
   return (
     <>

@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
-import { useCart } from "../../context/cartContext"; 
+import { useCart } from "../../context/cartContext";
 
 import logo from "../../assets/images/furnirologoImg.png";
 import signupIcon from "../../assets/images/signupImg.png";
 import searchIcon from "../../assets/images/searchImg.png";
 import likeIcon from "../../assets/images/likeImg.png";
 import cartIcon from "../../assets/images/cartImg.png";
+import menuImg from "../../assets/images/menuImg.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const { cartItems } = useCart(); 
+  const { cartItems } = useCart();
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -24,11 +25,59 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-10 font-medium text-gray-700">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/shop">Shop</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+        <ul className="hidden md:flex gap-10 font-medium">
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black border-b-2 border-black pb-1"
+                  : "text-gray-700"
+              }
+              end
+            >
+              Home
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/shop"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black border-b-2 border-black pb-1"
+                  : "text-gray-700"
+              }
+            >
+              Shop
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black border-b-2 border-black pb-1"
+                  : "text-gray-700"
+              }
+            >
+              About
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black border-b-2 border-black pb-1"
+                  : "text-gray-700"
+              }
+            >
+              Contact
+            </NavLink>
+          </li>
         </ul>
 
         {/* Right Section */}
@@ -39,7 +88,7 @@ export default function Navbar() {
             className="md:hidden text-2xl"
             onClick={() => setOpen(!open)}
           >
-            ☰
+            <img src={menuImg} className="W-5 h-5" alt="Menu Image" />
           </button>
 
           <Link to="/signup">
@@ -54,7 +103,7 @@ export default function Navbar() {
             <img src={likeIcon} alt="like" className="w-5 h-5 hover:scale-110 transition" />
           </Link>
 
-          {/* 🛒 Cart Icon with Badge */}
+          {/* Cart Icon with Badge */}
           <Link to="/cart" className="relative">
             <img
               src={cartIcon}
@@ -72,16 +121,69 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Dropdown Menu */}
+      {/* Mobile Dropdown Menu */}
       {open && (
-        <ul className="md:hidden flex flex-col gap-4 px-6 pb-4 font-medium text-gray-700 bg-white shadow">
-          <li><Link to="/" onClick={() => setOpen(false)}>Home</Link></li>
-          <li><Link to="/shop" onClick={() => setOpen(false)}>Shop</Link></li>
-          <li><Link to="/about" onClick={() => setOpen(false)}>About</Link></li>
-          <li><Link to="/contact" onClick={() => setOpen(false)}>Contact</Link></li>
+        <ul className="md:hidden flex flex-col gap-4 px-6 pb-6 pt-4 font-medium bg-white shadow-lg border-t">
+
+          <li>
+            <NavLink
+              to="/"
+              end
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black font-semibold border-l-4 border-black pl-2"
+                  : "text-gray-700"
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/shop"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black font-semibold border-l-4 border-black pl-2"
+                  : "text-gray-700"
+              }
+            >
+              Shop
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/about"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black font-semibold border-l-4 border-black pl-2"
+                  : "text-gray-700"
+              }
+            >
+              About
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-black font-semibold border-l-4 border-black pl-2"
+                  : "text-gray-700"
+              }
+            >
+              Contact
+            </NavLink>
+          </li>
+
         </ul>
       )}
     </nav>
   );
 }
-
-

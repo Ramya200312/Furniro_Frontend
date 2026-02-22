@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useCart } from "../../context/cartContext";
 
 export default function ProductInfo({ product }) {
+  const { addToCart } = useCart();
   const sizes = ["L", "XL", "XS"];
   const colors = ["#816DFA", "#000000", "#B88E2F"];
 
@@ -35,9 +37,8 @@ export default function ProductInfo({ product }) {
             <button
               key={s}
               onClick={() => setSize(s)}
-              className={`px-3 py-1 border rounded ${
-                size === s ? "bg-[#B88E2F] text-white" : ""
-              }`}
+              className={`px-3 py-1 border rounded ${size === s ? "bg-[#B88E2F] text-white" : ""
+                }`}
             >
               {s}
             </button>
@@ -53,9 +54,8 @@ export default function ProductInfo({ product }) {
             <div
               key={c}
               onClick={() => setColor(c)}
-              className={`w-6 h-6 rounded-full cursor-pointer border ${
-                color === c ? "ring-2 ring-black" : ""
-              }`}
+              className={`w-6 h-6 rounded-full cursor-pointer border ${color === c ? "ring-2 ring-black" : ""
+                }`}
               style={{ background: c }}
             />
           ))}
@@ -79,10 +79,14 @@ export default function ProductInfo({ product }) {
         </div>
 
         {/* Buttons */}
-        <button className="border px-6 py-3 rounded-lg hover:bg-black hover:text-white">
+        <button className="border px-6 py-2 rounded-lg hover:bg-[#B88E2F] hover:text-white"
+          onClick={(e) => {
+            e.stopPropagation();
+            addToCart(product);
+          }}>
           Add To Cart
         </button>
-        <button className="border px-6 py-3 rounded-lg">
+        <button className="border px-6 py-2 rounded-lg">
           + Compare
         </button>
       </div>

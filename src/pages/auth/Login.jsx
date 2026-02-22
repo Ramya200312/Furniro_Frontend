@@ -26,6 +26,9 @@ export default function Login() {
 
       // Store JWT token
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("guestId", res.data.user_id);
+
+      window.dispatchEvent(new Event("login"));
 
       alert("Login successful!");
 
@@ -76,7 +79,7 @@ export default function Login() {
 
         <button
           type="submit"
-          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition"
+          className="w-full bg-[#B88E2F] text-white py-2 rounded border border-[#B88E2F] transition duration-300 hover:bg-white hover:text-[#B88E2F]"
         >
           Login
         </button>

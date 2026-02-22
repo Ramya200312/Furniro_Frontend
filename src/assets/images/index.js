@@ -1,6 +1,7 @@
 export { default as diningImg } from "./diningImg.png";
 export { default as livingImg } from "./livingImg.png";
 export { default as bedroomImg } from "./bedroomImg.png";
+export { default as delImg } from "./delImg.png";
 export {default as set1Img1 } from "./products/set1Img1.png";
 export {default as set1Img2 } from "./products/set1Img2.png";
 export {default as set1Img3 } from "./products/set1Img3.png";

@@ -1,4 +1,5 @@
 import { useCart } from "../../context/cartContext";
+import delImg from "../../assets/images/delImg.png";
 
 const CartTable = ({ cartItems }) => {
   const { removeFromCart, updateQuantity } = useCart();
@@ -23,7 +24,7 @@ const CartTable = ({ cartItems }) => {
         <tbody>
           {cartItems.map((item) => (
             <tr key={item.id} className="border-b">
-              
+
               {/* Product Info */}
               <td className="py-4 flex items-center gap-4">
                 <img
@@ -59,7 +60,7 @@ const CartTable = ({ cartItems }) => {
                   onClick={() => removeFromCart(item.id)}
                   className="text-red-500"
                 >
-                  ✕
+                  <img src={delImg} className="cursor-pointer" alt="Delete Image" />
                 </button>
               </td>
 

@@ -81,7 +81,7 @@ export default function Signup() {
 
         <button
           type="submit"
-          className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition"
+         className="w-full bg-[#B88E2F] text-white py-2 rounded border border-[#B88E2F] transition duration-300 hover:bg-white hover:text-[#B88E2F]"
         >
           Signup
         </button>

@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const CartContext = createContext();
@@ -8,20 +9,46 @@ const API = `${url}/cart`;
 
 const getGuestId = () => {
   let id = localStorage.getItem("guestId");
-  if (!id) {
-    id = crypto.randomUUID();
-    localStorage.setItem("guestId", id);
-  }
+  // if (!id) {
+  // id = crypto.randomUUID();
+  // localStorage.setItem("guestId", id);
+  // }
   return id;
 };
 
 export const CartProvider = ({ children }) => {
+  const navigate = useNavigate();
+
   const [cartItems, setCartItems] = useState([]);
-  const guestId = getGuestId();
+
+  const [guestId, setGuestId] = useState(getGuestId());
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
-    fetchCart();
+    const handleLogin = () => {
+      const newToken = localStorage.getItem("token");
+      const newId = localStorage.getItem("guestId");
+      setToken(newToken);
+      setGuestId(newId);
+    };
+
+    window.addEventListener("login", handleLogin);
+
+    return () => window.removeEventListener("login", handleLogin);
   }, []);
+
+  useEffect(() => {
+    const id = localStorage.getItem("guestId");
+    if (id) {
+      setGuestId(id);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (guestId || token) {
+      fetchCart();
+    }
+  }, [token, guestId]);
 
   const fetchCart = async () => {
     try {
@@ -33,6 +60,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = async (product) => {
+    if (guestId != null) {
     try {
       const res = await axios.post(`${API}/add`, {
         guestId,
@@ -42,6 +70,10 @@ export const CartProvider = ({ children }) => {
     } catch (err) {
       console.error("Add to cart error", err);
     }
+  }
+  else {
+    navigate("/login");
+  }
   };
 
   const removeFromCart = async (id) => {

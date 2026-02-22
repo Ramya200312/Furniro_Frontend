@@ -8,10 +8,12 @@ import Signup from "../pages/auth/Signup";
 import Login from "../pages/auth/Login";
 import ProductDetails from "../components/productdetails/ProductDetails";
 import Cart from "../components/cart/Cart";
+import ScrollToTop from "../components/common/ScrollToTop";
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
+    <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
@@ -23,9 +25,8 @@ const AppRouter = () => {
           <Route path="product/:id" element={<ProductDetails />} />
           <Route path="cart" element={<Cart />} />
         </Route>
-
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 

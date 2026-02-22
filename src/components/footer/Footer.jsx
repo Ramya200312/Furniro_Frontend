@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 mt-20">
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          
+
           {/* Brand */}
           <div>
             <h2 className="text-2xl font-bold mb-4">Funiro.</h2>
@@ -19,10 +21,10 @@ export default function Footer() {
           <div>
             <h4 className="text-gray-400 text-sm mb-4">Links</h4>
             <ul className="space-y-3 font-medium">
-              <li className="hover:text-yellow-600 cursor-pointer">Home</li>
-              <li className="hover:text-yellow-600 cursor-pointer">Shop</li>
-              <li className="hover:text-yellow-600 cursor-pointer">About</li>
-              <li className="hover:text-yellow-600 cursor-pointer">Contact</li>
+              <li className="hover:text-yellow-600 cursor-pointer"><Link to="/">Home</Link></li>
+              <li className="hover:text-yellow-600 cursor-pointer"><Link to="/shop">Shop</Link></li>
+              <li className="hover:text-yellow-600 cursor-pointer"><Link to="/about">About</Link></li>
+              <li className="hover:text-yellow-600 cursor-pointer"><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
 
