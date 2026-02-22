@@ -1,0 +1,18 @@
+export { default as diningImg } from "./diningImg.png";
+export { default as livingImg } from "./livingImg.png";
+export { default as bedroomImg } from "./bedroomImg.png";
+export {default as set1Img1 } from "./products/set1Img1.png";
+export {default as set1Img2 } from "./products/set1Img2.png";
+export {default as set1Img3 } from "./products/set1Img3.png";
+export {default as set1Img4 } from "./products/set1Img4.png";
+export {default as set2Img5 } from "./products/set2Img5.png";
+export {default as set2Img6 } from "./products/set2Img6.png";
+export {default as set2Img7 } from "./products/set2Img7.png";
+export {default as set2Img8 } from "./products/set2Img8.png";
+export {default as furnirogal1 } from "./gallery/furnirogal1.png";
+export {default as furnirogal2 } from "./gallery/furnirogal2.png";
+export {default as furnirogal3 } from "./gallery/furnirogal3.png";
+export {default as furnirogal4 } from "./gallery/furnirogal4.png";
+export {default as furnirogal5 } from "./gallery/furnirogal5.png";
+export {default as furnirogal6 } from "./gallery/furnirogal6.png";
+export {default as furnirogal7 } from "./gallery/furnirogal7.png";
